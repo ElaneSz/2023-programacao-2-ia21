@@ -14,3 +14,13 @@ app.get("/", (req, res) => res.send("Hello word"))
 
 app.listen(8080, () => console.log(`server is running, on port ${PORT}`))
 
+/*JSON
+XML
+API
+HTTP
+RPC
+SOAP
+
+REST | 
+RESTful
+GraphQL*/
