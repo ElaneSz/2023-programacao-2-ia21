@@ -13,14 +13,14 @@ router.get("/", async (req, res) => { /*Rota para listar tudo ||*/
 router.get("/:id", async (req, res) => { /*Rota para listar dado especifico ||*/
   console.log("READED ITEN")
   const db = await database()
-  const result = await db.all('SELECT * FROM todo WHERE id=?', [req.params.id]) /*Pega da URL*/
+  const result = await db.all('SELECT * FROM todo WHERE id=?', [req.params.id]) /*Parametro que pega da URL o id para ser usado*/
   res.json(result)
 })
 
 router.post("/", async (req, res) => { /*Rota para inserir ||*/
   console.log("CREATED NEW ITEM")
   const db = await database()
-  const result = await db.run('INSERT INTO todo(texto) VALUES(?)', [req.body.texto])
+  const result = await db.run('INSERT INTO todo(texto) VALUES(?)', [req.body.texto]) /*Parametro que pega do 'body' o texto para ser inserido*/
   res.json({ id: result.lastID })
 })
 
