@@ -1,15 +1,15 @@
 import sqlite3 from 'sqlite3'
 import { Database, open } from 'sqlite'
 
-let _db: Database<any> | null = null
+let _db: Database<any> | null = null /*O '_db' recebe este apelido ou ele é nulo*/
 
-export default async function() {
-  if (_db) 
+export default async function() { 
+  if (_db) /*IF para caso o '_db' não seja nulo*/
     return _db as Database<any> 
 
-  const db = await open({
+  const db = await open({ /*Para caso o '_db' seja nulo, ocorre a conexão pela 1º vez | O BD tem o nome de 'bd'*/
     filename: './database.sqlite',
-    driver: sqlite3.Database
+    driver: sqlite3.Database /*Conexão real com o BD*/
   })
 
   await db.exec(`
@@ -20,7 +20,7 @@ export default async function() {
     )
   `)
 
-  _db = db
+  _db = db /*O 'db' é passado para o '_db'*/
 
   return _db
 }
